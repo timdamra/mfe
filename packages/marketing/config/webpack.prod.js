@@ -7,13 +7,13 @@ const packageJson = require("../package.json");
 const prodConfig = {
     mode: "production",
     output: {
-        filename: "[name].[contenthash].js"
+        filename: "[name].[contenthash].js",
+        publicPath: "/marketing/latest/"
     },
     plugins: [
         new ModuleFederationPlugin({
             name: "marketing",
             filename: "remoteEntry.js",
-            publicPath: "/marketing/latest/",
             exposes: {
                 "./MarketingApp": "./src/bootstrap"
             },
