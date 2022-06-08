@@ -8,7 +8,7 @@ import App from "./App";
  * @param {HTMLElement} el 
  * @returns {void}
  */
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath, onSignIn }) => {
     // "createMemoryHistory" used when container is running
     // i.e. enivronment === "development"
     const history = defaultHistory || createMemoryHistory({
@@ -22,7 +22,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     }
 
     ReactDOM.render(
-        <App history={history} />,
+        <App onSignIn={onSignIn} history={history} />,
         el
     )
 
@@ -39,7 +39,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 
 // to run sub-app in isolation
 if (process.env.NODE_ENV === "development") {
-    const devRoot = document.querySelector("#_marketing-dev-root");
+    const devRoot = document.querySelector("#_auth-dev-root");
 
     // when running in isolation use Browserhistory nott Memoryhistory
     if (devRoot) {

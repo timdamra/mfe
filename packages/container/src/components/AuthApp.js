@@ -1,10 +1,10 @@
 // 'marketing' reference to "name" property in marketing webpack
 // 'MarketingApp' reference to property in the "exposes" object in marketing webpack
-import { mount } from "marketing/MarketingApp";
+import { mount } from "auth/AuthApp";
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-export default () => {
+export default ({ onSignIn }) => {
     const ref = useRef(null);
     const history = useHistory();
 
@@ -23,7 +23,8 @@ export default () => {
                     // the push method updates the URL path
                     history.push(nextPathName);
                 }
-            }
+            },
+            onSignIn
         });
 
         // this updates navigation for container
